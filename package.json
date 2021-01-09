@@ -38,7 +38,6 @@
   "dependencies": {
     "@types/redux-logger": "^3.0.8",
     "antd": "^4.10.0",
-    "c": "^3.0.1",
     "css-loader": "^5.0.1",
     "firebase": "^8.2.1",
     "less-loader": "^7.2.1",
