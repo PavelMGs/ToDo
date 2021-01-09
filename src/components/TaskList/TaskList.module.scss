@@ -1,0 +1,22 @@
+.root {
+    display: flex;
+    flex-direction: column;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.filter {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.filter button {
+    margin-left: 20px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}

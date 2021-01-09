@@ -1,0 +1,28 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.header {
+    margin-top: 25px;
+    font-size: 100px;
+    font-family: sans-serif;
+    color: rgba($color: #cfc9c900, $alpha: 1.0)
+}
+
+.taskBox {
+    max-width: 800px;
+    border: 0.5px solid black;
+    background-color: white;
+}
+
+// .addBar {
+//     box-shadow: inset 2px 0px 5px;
+// }
+
+// .addBar input {
+//     width: 355px;
+//     font-size: 24px;
+// }
