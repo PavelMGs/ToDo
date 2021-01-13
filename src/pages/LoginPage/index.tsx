@@ -33,7 +33,8 @@ const LoginPage = () => {
                     console.log('last check', localStorage.getItem('user'))
                     history.push('/');
                 }
-            });
+            })
+            .catch((err) => alert(err.message));
         } else {
             signWithEmail(values.username, values.password)
             .then((user) => {
@@ -44,7 +45,17 @@ const LoginPage = () => {
                     console.log('last check', localStorage.getItem('user'))
                     history.push('/');
                 }
-            });;
+            })
+            .catch((err) => {
+                console.log(err.message)
+                if(err.message == 'The email address is badly formatted.') {
+                    alert('Некорректный почтовый адрес');
+                } else if(err.message === 'The password is invalid or the user does not have a password.') {
+                    alert('Некорректный пароль');
+                } else if(err.message === 'There is no user record corresponding to this identifier. The user may have been deleted.') {
+                    alert('Нет пользователя с таким адресом');
+                }
+            });
         }
     };
 
@@ -62,9 +73,9 @@ const LoginPage = () => {
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
-                    label="Username"
+                    label="Email"
                     name="username"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
+                    rules={[{ required: true, message: 'Please input your email!' }]}
                 >
                     <Input />
                 </Form.Item>

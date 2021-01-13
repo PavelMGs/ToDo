@@ -1,6 +1,6 @@
 .root {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 .list {
@@ -13,10 +13,27 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
+    margin-top: 10px;
 }
 
 .filter button {
     margin-left: 20px;
-    border: none;
+    margin-bottom: 5px;
     background-color: rgba(255, 255, 255, 0);
+}
+
+.not_focused {
+    border: none;
+}
+
+.focused {
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 3px 3px 7px;
+    outline: none;
+}
+
+.no_tasks {
+    font-size: 24px;
+    text-align: center;
 }

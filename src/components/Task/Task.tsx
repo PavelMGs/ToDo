@@ -9,7 +9,6 @@ import Run from './assets/run.png';
 import Stop from './assets/stop.png';
 import Delete from './assets/delete.png';
 import Edit from './assets/edit.png'
-import { isTemplateTail } from 'typescript';
 
 interface IProps {
     props: TaskType,
@@ -17,6 +16,7 @@ interface IProps {
 
 const Task: React.FC<IProps> = ({ props }) => {
     const [isRunned, setIsRunned] = useState(false);
+    const [runClass, setRunClass] = useState('run')
     const [timeAgoState, setTimeAgoState] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [editValue, setEditValue] = useState(props.description)
@@ -31,7 +31,14 @@ const Task: React.FC<IProps> = ({ props }) => {
         setTaskList(store.list?.taskList);
     }, [store])
 
-    const handleRunStopClick = () => {
+    // const handleRunStopClick = () => {
+        
+    // }
+
+    const handleRunImage = () => {
+        runClass === 'run'
+        ? setRunClass('stop')
+        : setRunClass('run');
         setIsRunned(!isRunned);
     }
 
@@ -72,8 +79,8 @@ const Task: React.FC<IProps> = ({ props }) => {
                 if (timeAgo === 0) {
                     return;
                 } else if (seconds < 60) {
-                    setTimeAgoState(`Создано ${sec} секунд назад`);
-                } else if (seconds >= 60 && sec < 3600) {
+                    setTimeAgoState(`Создано ${seconds} секунд назад`);
+                } else if (seconds >= 60 && seconds < 3600) {
                     setTimeAgoState(`Создано ${minutes} min назад`);
                 } else if (minutes >= 60 && hours < 24) {
                     setTimeAgoState(`Создано ${hours} часов назад`);
@@ -124,27 +131,23 @@ const Task: React.FC<IProps> = ({ props }) => {
                 <input
                     type="text"
                     value={editValue ? editValue : ''}
-                    className={s.edit}
+                    className={s.edit_label}
                     onChange={(e) => setEditValue(e.target.value)}
                 />
 
                 <div className={s.settings}>
 
-                    <button type="button">
-                        <img
-                            src={Delete}
-                            alt="delete"
-                            onClick={() => handleDeleteClick()}
-                            width="10" />
-                    </button>
-
-                    <button type="button">
-                        <img
-                            src={Edit}
-                            alt="edit"
-                            onClick={() => handleEditClick()}
-                            width="10" />
-                    </button>
+                    <button 
+                        type="button" 
+                        onClick={() => handleDeleteClick()}
+                        className={s.delete}
+                    />
+                    
+                    <button 
+                        type="button" 
+                        onClick={() => handleEditClick()}
+                        className={s.edit}
+                    />
 
                 </div>
             </div>
@@ -153,28 +156,35 @@ const Task: React.FC<IProps> = ({ props }) => {
 
     return (
         <div className={s.root}>
-            <input
-                type="checkbox"
-                checked={props.done}
-                onChange={() => {
-                    store.list?.taskList.map((item, index) => {
-                        if (item.id === props.id) {
-                            dispatch(setDone(item.id))
-                        }
-                    })
-                }}
-            />
-            <label>{props.description}</label>
+            
+            <label className={s.label}>
+                <input
+                    type="checkbox"
+                    checked={props.done}
+                    className={s.checkbox}
+                    onChange={() => {
+                        store.list?.taskList.map((item, index) => {
+                            if (item.id === props.id) {
+                                console.log('CHECk')
+                                dispatch(setDone(item.id))
+                            }
+                        })
+                    }}
+                />
 
-            <button type="button">
-                <img
-                    src={isRunned ? Stop : Run}
-                    alt={isRunned ? "stop" : "run"}
-                    onClick={() => handleRunStopClick()}
-                    width="10" />
-            </button>
+                <span className={s.custom_check}></span>
+                
+                {props.description}
+            </label>
 
-            <div className={s.time}>
+            <div className={s.next}>
+                <button
+                    className={s[runClass as keyof typeof s]}
+                    onClick={() => {handleRunImage()}}
+                />
+            </div>
+
+            <div className={s.counter   }>
                 {props.min}:{props.sec}
             </div>
 
@@ -184,21 +194,18 @@ const Task: React.FC<IProps> = ({ props }) => {
 
             <div className={s.settings}>
 
-                <button type="button">
-                    <img
-                        src={Delete}
-                        alt="delete"
+            <button 
+                        type="button" 
                         onClick={() => handleDeleteClick()}
-                        width="10" />
-                </button>
-
-                <button type="button">
-                    <img
-                        src={Edit}
-                        alt="edit"
+                        className={s.delete}
+                    />
+                    
+                    <button 
+                        type="button" 
                         onClick={() => handleEditClick()}
-                        width="10" />
-                </button>
+                        className={s.edit}
+                    />
+                   
 
             </div>
         </div>

@@ -19,20 +19,6 @@ const NewTask = () => {
 
     const [firstUpdate, setfirstUpdate] = useState(true)
 
-    // const handlerSubmit = () => {
-    //     console.log('### description', value);
-    //     console.log('### minutes', minutes);
-    //     console.log('### seconds', seconds);
-    //     if(value === undefined || value === "") {
-    //         alert("Введите описание задачи!")
-    //     } else if(minutes <= 0)  {
-    //         alert("Введите время в минутах")
-    //     } else if(seconds <= 0) {
-    //         alert("Введите время в секундах")
-    //     } else {
-    //         console.log('ok, noob')
-    //     }
-    // }
     useEffect(() => {
         if(isFirstRun) {
             setIsFirstRun(false);

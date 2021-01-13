@@ -2,22 +2,113 @@
     display: flex;
     align-items: baseline;
     font-size: 24px;
+    padding: 15px;
+    justify-content: space-between;
+    width: 800px;
 }
 
-.time {
-    margin-left: auto;
-}
 
-.edit {
+.edit_label {
     font-size: 24px;
     border: none;
 }
 
-button {
+.next > button {
     margin-left: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
 }
 
-.settings {
-    margin-left: 25;
-    margin-right: 5px;
+.run {
+    background-image: url(assets/run.png);
+    background-size: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.stop {
+    background-image: url(./assets/stop.png);
+    background-size: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.counter {
+    font-size: 1em;
+}
+
+.settings > button {
+    margin-left: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+    
+}
+
+.delete {
+    background-image: url(./assets/delete.png);
+    background-size: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.edit {
+    background-image: url(./assets/edit.png);
+    background-size: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.label {
+    max-width: 350px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 1.2em;
+}
+
+.checkbox {
+    position: absolute;
+    appearance: none;
+}
+
+.custom_check {
+    position: absolute;
+    margin-left: -1.2em;
+    margin-top: 0.35em;
+    height: 1em;
+    width: 1em;
+    background-image: url(assets/off.svg);
+}
+
+//Checked
+
+.checkbox:checked + .custom_check {
+    background-image: url(assets/on.svg);
+}
+
+//Focused
+
+.checkbox:focus + .custom_check {
+    background-image: url(assets/off-focused.svg);
+}
+
+//Checked focused
+
+.checkbox:checked:focus + .custom_check {
+    background-image: url(assets/on-focused.svg);
+}
+
+//Disabled
+
+.checkbox:disabled + .custom_check {
+    background-image: url(assets/off-disabled.svg);
+}
+
+//Disabled focused
+
+
+.checkbox:checked:disabled + .custom_check {
+    background-image: url(assets/on-disabled.svg);
 }

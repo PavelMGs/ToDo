@@ -38,7 +38,8 @@ const TaskList = () => {
     const dispatch = useDispatch();
     const store: IStore = useSelector((store) => store || { list: { taskList: [] } });
     const [filtredTasks, setFiltredTasks] = useState(store.list?.taskList || []);
-    const [filter, setFilter] = useState('Все')
+    const [filter, setFilter] = useState('Все');
+    const [filterFocused, setFilterFocused] = useState(['focused', 'not_focused', 'not_focused']);
 
 
     const handleFilterButton = (filterName: string = '') => {
@@ -47,7 +48,7 @@ const TaskList = () => {
 
         let newArr: TaskType[] | any[] = [];
         newArr = store.list ? newArr.concat(store.list.taskList) : [];
-
+console.log('### filter', filterName)
         switch (filterName) {
             
 
@@ -55,15 +56,20 @@ const TaskList = () => {
                 filtredArr = newArr.filter(item => !item.done)
                 setFiltredTasks(filtredArr);
                 setFilter('Активные задачи');
+                setFilterFocused(['not_focused', 'focused', 'not_focused'])
                 break;
 
             case 'Завершённые задачи':
                 filtredArr = newArr.filter(item => item.done);
                 setFiltredTasks(filtredArr);
                 setFilter('Завершённые задачи');
+                setFilterFocused(['not_focused', 'not_focused', 'focused'])
                 break;
 
-            default: setFiltredTasks(newArr);
+            default: 
+                setFiltredTasks(newArr);
+                setFilter('Все');
+                setFilterFocused(['focused', 'not_focused', 'not_focused'])
         }
     };
 
@@ -104,9 +110,9 @@ const TaskList = () => {
             <div className={s.list}>
                 {
                     
-                    filtredTasks !== null ? filtredTasks?.map((item: TaskType) => {
+                    filtredTasks?.length ? filtredTasks?.map((item: TaskType) => {
                         return <Task key={item.id} props={item} />
-                    }) : <div>Все задачи выполнены!</div>
+                    }) : <div className={s.no_tasks}>Тут нет задач...</div>
 
                 }
             </div>
@@ -116,6 +122,7 @@ const TaskList = () => {
 
                 <button
                 onClick={() => handleFilterButton()}
+                className={s[filterFocused[0] as keyof typeof s]}
                 >
                     Все задачи
                 </button>
@@ -123,13 +130,15 @@ const TaskList = () => {
 
                 <button
                 onClick={() => handleFilterButton('Активные задачи')}
+                className={s[filterFocused[1] as keyof typeof s]}
                 >
                     Активные задачи
                 </button>
 
 
                 <button
-                onClick={() => handleFilterButton('Завершённые задачи')}
+                onClick={() =>{console.log('TikTak'); handleFilterButton('Завершённые задачи')}}
+                className={s[filterFocused[2] as keyof typeof s]}
                 >
                     Завершённые задачи
                 </button>

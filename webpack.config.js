@@ -50,6 +50,17 @@ module.exports = {
         use: ['url-loader'],
       },
       {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },
+      {
         test: /\.less$/,
         include: [/node_modules/],
         use: [

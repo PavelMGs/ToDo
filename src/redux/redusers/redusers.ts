@@ -63,7 +63,7 @@ export const userReducer = (state = {UID: null}, action: IUserAction) => {
         case SET_UID :
             return {
                 ...state,
-                UID: action.payload
+                UID: action.payload ? action.payload : null
             }
 
         default: return state;

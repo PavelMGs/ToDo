@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/PavelMGs/ToDo#readme",
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.14",
@@ -28,6 +29,7 @@
     "html-webpack-plugin": "^4.5.0",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
+    "svg-url-loader": "^7.1.1",
     "ts-loader": "^8.0.12",
     "url-loader": "^4.1.1",
     "webpack": "^4.44.2",
@@ -38,6 +40,7 @@
   "dependencies": {
     "@types/redux-logger": "^3.0.8",
     "antd": "^4.10.0",
+    "classnames": "^2.2.6",
     "css-loader": "^5.0.1",
     "firebase": "^8.2.1",
     "less-loader": "^7.2.1",

@@ -4,14 +4,14 @@ import { Route, Switch } from 'react-router-dom'
 
 import s from './App.module.scss';
 import { IStore } from './components/TaskList/TaskList';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage';
 import { setUid } from './redux/actions/actions';
 import PrivateRoute from './utils/privateRoute'
 
 const App = () => {
 
-    const state: IStore = useSelector(state => state);
+    const state: IStore = useSelector(state => state);``
     const dispatch = useDispatch()
     
     if(state.user?.UID) {

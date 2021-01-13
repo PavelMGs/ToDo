@@ -2,7 +2,10 @@
 // Please do not change this file!
 interface CssExports {
   'filter': string;
+  'focused': string;
   'list': string;
+  'no_tasks': string;
+  'not_focused': string;
   'root': string;
 }
 export const cssExports: CssExports;

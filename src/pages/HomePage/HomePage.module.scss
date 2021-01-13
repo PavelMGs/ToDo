@@ -14,15 +14,12 @@
 
 .taskBox {
     max-width: 800px;
-    border: 0.5px solid black;
+    border: 2px solid black;
+    border-radius: 5px;
     background-color: white;
 }
 
-// .addBar {
-//     box-shadow: inset 2px 0px 5px;
-// }
-
-// .addBar input {
-//     width: 355px;
-//     font-size: 24px;
-// }
+.logout {
+    align-self: flex-end;
+    margin: 10px;
+}
