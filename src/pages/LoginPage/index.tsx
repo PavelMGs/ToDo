@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 
 import s from './LoginPage.module.scss'
-import { createUser, signWithEmail } from '../../firebase';
+import { auth, createUser, signWithEmail } from '../../firebase';
 import { useDispatch } from 'react-redux';
 import { setUid } from '../../redux/actions/actions';
 import { useHistory } from 'react-router';
@@ -75,7 +75,10 @@ const LoginPage = () => {
                 <Form.Item
                     label="Email"
                     name="username"
-                    rules={[{ required: true, message: 'Please input your email!' }]}
+                    rules={[
+                        { required: true, message: 'Please input your email!' },
+                        { type: 'email', message: 'Некорректный адрес'},
+                    ]}
                 >
                     <Input />
                 </Form.Item>
@@ -83,7 +86,10 @@ const LoginPage = () => {
                 <Form.Item
                     label="Password"
                     name="password"
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    rules={[
+                        { required: true, message: 'Пожалуйста, введите пароль!' },
+                        { min: 6, message: 'Пароль должен быть длиннее 6 символов!'},
+                    ]}
                 >
                     <Input.Password />
                 </Form.Item>

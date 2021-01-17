@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyCt2p3XFiHRODV2DCyCNaK0g6iB4rrK9-w",
     authDomain: "todo-2e315.firebaseapp.com",
@@ -13,9 +14,17 @@ const firebaseConfig = {
     measurementId: "G-WYCD0PMSBH"
   };
 
+  export const serviceAccount = require('./todo-2e315-firebase-adminsdk-i7c23-3bef399616.json');
+
+
 firebase.initializeApp(firebaseConfig);
 
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://todo-2e315-default-rtdb.firebaseio.com"
+// });
+
 export const database = firebase.database();
-export const auth = firebase.auth();
+export const auth = firebase.auth()
 export const signWithEmail = (email: string, password: string) => auth.signInWithEmailAndPassword(email, password);
 export const createUser = (email: string, password: string) => auth.createUserWithEmailAndPassword(email, password);
