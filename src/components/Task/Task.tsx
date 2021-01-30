@@ -137,11 +137,6 @@ const Task: React.FC<IProps> = ({ props }) => {
 
                 <div className={s.settings}>
 
-                    <button 
-                        type="button" 
-                        onClick={() => handleDeleteClick()}
-                        className={s.delete}
-                    />
                     
                     <button 
                         type="button" 
