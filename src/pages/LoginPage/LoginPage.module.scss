@@ -9,4 +9,8 @@
 .isNew {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+.isNew :first-child {
+    margin-right: 5px;
 }
